@@ -14,6 +14,10 @@
       color: #333;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     header {
       background: linear-gradient(90deg, #333, #444);
       color: #fff;
@@ -55,11 +59,10 @@
       border-radius: 2px;
     }
 
-    /* Smaller & Stylish profile photo */
     .profile-full {
       display: block;
       margin: 20px auto;
-      width: 250px;   /* reduced size */
+      width: 250px;
       height: auto;
       border-radius: 12px;
       object-fit: cover;
@@ -73,13 +76,13 @@
       box-shadow: 0 8px 20px rgba(0,0,0,0.35);
     }
 
-    .skills-category {
+    .skills-category, .experience-category, .education-category, .certifications-category {
       margin-bottom: 40px;
     }
 
-    .skills, .projects {
+    .skills, .projects, .experience, .education, .certifications {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 20px;
     }
 
@@ -105,6 +108,22 @@
       padding: 15px;
       margin-top: 20px;
     }
+
+    a {
+      color: #00bcd4;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    img.edu-logo {
+      width:100px;
+      display:block;
+      margin:auto;
+      border-radius:8px;
+    }
   </style>
 </head>
 <body>
@@ -112,25 +131,77 @@
     <h1>Sirish Allam</h1>
     <nav>
       <a href="#about">About</a>
+      <a href="#education">Education</a>
+      <a href="#internships">Internships</a>
       <a href="#skills">Skills</a>
       <a href="#projects">Projects</a>
+      <a href="#certifications">Certifications</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
 
+  <!-- About Section -->
   <section id="about">
     <h2>About Me</h2>
-    <!-- Nicely styled smaller profile photo -->
     <img src="sirish1.jpg" alt="Sirish Allam" class="profile-full">
     <p style="text-align:center; max-width:700px; margin:auto;">
-      Hi 👋 I'm <b>Sirish</b>, a Full-Stack Developer skilled in C, C++, Python, JavaScript, and the MERN stack. 
-      I love solving problems and building innovative projects.
+      Hi 👋 I'm <b>Sirish Allam</b>, a Full-Stack Developer skilled in C, C++, Python, JavaScript, and the MERN stack. 
+      I am passionate about building innovative projects, solving complex problems, and learning new technologies.
     </p>
   </section>
 
+  <!-- Education Section -->
+  <section id="education">
+    <h2>Education</h2>
+    <div class="education">
+      <!-- KL University -->
+      <div class="card">
+        <img src="kluniversity-logo.png" alt="KL University" class="edu-logo">
+        <h3>KL University</h3>
+        <p><b>Degree:</b> Bachelor of Technology - BTech, Computer Science and Engineering</p>
+        <p><b>Duration:</b> Jun 2023 - Present</p>
+        <p><b>Activities & Societies:</b> CENTRE OF EXTENSION ACTIVITIES, Social immersive learning</p>
+        <p><b>Skills:</b> Machine Learning · Java · HTML · C · JavaScript · Artificial Intelligence (AI) · C++</p>
+      </div>
+
+      <!-- Tirumala Junior College -->
+      <div class="card">
+        <h3>Tirumala Junior College, Rajamahendravaram</h3>
+        <p><b>Level:</b> Intermediate</p>
+        <p><b>Duration:</b> Sep 2021 - Apr 2023</p>
+        <p><b>Grade:</b> 950 A grade</p>
+        <p><b>Activities & Societies:</b> Cricket, Volleyball</p>
+      </div>
+
+      <!-- Sri Chaitanya Techno School -->
+      <div class="card">
+        <h3>Sri Chaitanya Techno School, Payakaraopeta</h3>
+        <p><b>Level:</b> High School / Secondary Certificate Programs</p>
+        <p><b>Duration:</b> Jun 2020 - Apr 2021</p>
+        <p><b>Grade:</b> 10 A grade</p>
+        <p><b>Activities & Societies:</b> Volleyball, Sprinter, Lead the team in activities</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Internships Section -->
+  <section id="internships">
+    <h2>Internships & Programs</h2>
+    <div class="experience">
+      <div class="card">
+        <h3>Google Developer Certifications</h3>
+        <p>Various online courses and certifications in development and cloud technologies.</p>
+      </div>
+      <div class="card">
+        <h3>AICTE & EduSkills Programs</h3>
+        <p>Completed skill development programs recognized by AICTE and EduSkills.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
   <section id="skills">
     <h2>Skills</h2>
-
     <div class="skills-category">
       <h3 style="text-align:center;">💻 Development</h3>
       <div class="skills">
@@ -140,7 +211,6 @@
         <div class="card">MongoDB</div>
       </div>
     </div>
-
     <div class="skills-category">
       <h3 style="text-align:center;">📜 Programming Languages</h3>
       <div class="skills">
@@ -150,7 +220,6 @@
         <div class="card">JavaScript</div>
       </div>
     </div>
-
     <div class="skills-category">
       <h3 style="text-align:center;">🛠 Tools</h3>
       <div class="skills">
@@ -159,10 +228,9 @@
         <div class="card">Postman</div>
       </div>
     </div>
-
-   
   </section>
 
+  <!-- Projects Section -->
   <section id="projects">
     <h2>Projects</h2>
     <div class="projects">
@@ -177,6 +245,24 @@
     </div>
   </section>
 
+  <!-- Certifications Section -->
+  <section id="certifications">
+    <h2>Certifications</h2>
+    <div class="certifications">
+      <div class="card">
+        <h3>FreeCodeCamp Full Stack Development</h3>
+        <p>Completed comprehensive full-stack development course covering HTML, CSS, JS, React, and Node.js.</p>
+        <p><b>Year:</b> 2024</p>
+      </div>
+      <div class="card">
+        <h3>Python Fundamentals - Infosys</h3>
+        <p>Learned Python basics and fundamental programming concepts.</p>
+        <p><b>Year:</b> 2024</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
   <section id="contact">
     <h2>Contact Me</h2>
     <p style="text-align:center;">
