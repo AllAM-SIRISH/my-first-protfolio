@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sirish Allam | Portfolio</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      background: #f4f4f9;
+      color: #333;
+    }
+
+    header {
+      background: linear-gradient(90deg, #333, #444);
+      color: #fff;
+      padding: 15px 20px;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+
+    nav a {
+      color: #fff;
+      margin: 0 15px;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #00bcd4;
+    }
+
+    section {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    h2::after {
+      content: "";
+      display: block;
+      width: 60px;
+      height: 3px;
+      background: #00bcd4;
+      margin: 10px auto;
+      border-radius: 2px;
+    }
+
+    /* Smaller & Stylish profile photo */
+    .profile-full {
+      display: block;
+      margin: 20px auto;
+      width: 250px;   /* reduced size */
+      height: auto;
+      border-radius: 12px;
+      object-fit: cover;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+      border: 3px solid #00bcd4;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .profile-full:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+    }
+
+    .skills-category {
+      margin-bottom: 40px;
+    }
+
+    .skills, .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      background: #f0faff;
+    }
+
+    footer {
+      text-align: center;
+      background: #333;
+      color: white;
+      padding: 15px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Sirish Allam</h1>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <!-- Nicely styled smaller profile photo -->
+    <img src="sirish1.jpg" alt="Sirish Allam" class="profile-full">
+    <p style="text-align:center; max-width:700px; margin:auto;">
+      Hi 👋 I'm <b>Sirish</b>, a Full-Stack Developer skilled in C, C++, Python, JavaScript, and the MERN stack. 
+      I love solving problems and building innovative projects.
+    </p>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+
+    <div class="skills-category">
+      <h3 style="text-align:center;">💻 Development</h3>
+      <div class="skills">
+        <div class="card">React</div>
+        <div class="card">Node.js</div>
+        <div class="card">Express.js</div>
+        <div class="card">MongoDB</div>
+      </div>
+    </div>
+
+    <div class="skills-category">
+      <h3 style="text-align:center;">📜 Programming Languages</h3>
+      <div class="skills">
+        <div class="card">C</div>
+        <div class="card">C++</div>
+        <div class="card">Python</div>
+        <div class="card">JavaScript</div>
+      </div>
+    </div>
+
+    <div class="skills-category">
+      <h3 style="text-align:center;">🛠 Tools</h3>
+      <div class="skills">
+        <div class="card">Git & GitHub</div>
+        <div class="card">VS Code</div>
+        <div class="card">Postman</div>
+      </div>
+    </div>
+
+   
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="projects">
+      <div class="card">
+        <h3>Agri E-commerce</h3>
+        <p>An agriculture-based platform for seeds, fertilizers, and irrigation products.</p>
+      </div>
+      <div class="card">
+        <h3>Student Management System</h3>
+        <p>Manage students, faculty, and courses using MVC architecture and MongoDB.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <p style="text-align:center;">
+      📧 Email: <a href="mailto:allamsirish@example.com">allamsirish@example.com</a><br>
+      🌐 <a href="https://github.com/AllAM-SIRISH" target="_blank">GitHub</a> | 
+      <a href="https://www.linkedin.com/in/sirish-allam/" target="_blank">LinkedIn</a>
+    </p>
+  </section>
+
+  <footer>
+    <p>© 2025 Sirish Allam. All rights reserved.</p>
+  </footer>
+</body>
+</html>
