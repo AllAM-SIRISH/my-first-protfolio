@@ -1,279 +1,514 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sirish Allam | Portfolio</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      line-height: 1.6;
-      background: #f4f4f9;
-      color: #333;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sirish Allam | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- CSS Variables for different themes --- */
+        :root {
+            --bg-primary: #0d1117;
+            --bg-secondary: #161b22;
+            --accent-color: #00bcd4;
+            --text-color: #c9d1d9;
+            --heading-color: #f0f6fc;
+            --card-hover-bg: #21262d;
+            --box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            --card-shadow: 0 4px 10px rgba(0,0,0,0.25);
+            --transition-duration: 0.4s;
+        }
 
-    html {
-      scroll-behavior: smooth;
-    }
+        .light-theme {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f4f4f9;
+            --accent-color: #00a4b8;
+            --text-color: #333333;
+            --heading-color: #111111;
+            --card-hover-bg: #e6f7ff;
+            --box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            --card-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
 
-    header {
-      background: linear-gradient(90deg, #333, #444);
-      color: #fff;
-      padding: 15px 20px;
-      text-align: center;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-    }
+        .blue-theme {
+            --bg-primary: #1a2a4b;
+            --bg-secondary: #2b3d60;
+            --accent-color: #ffc107;
+            --text-color: #e0e6f3;
+            --heading-color: #ffffff;
+            --card-hover-bg: #3c5680;
+            --box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+            --card-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
 
-    nav a {
-      color: #fff;
-      margin: 0 15px;
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
+        /* --- Global styles now using variables --- */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.8;
+            background: var(--bg-primary);
+            color: var(--text-color);
+            overflow-x: hidden;
+            animation: fadeIn 1.5s ease-in-out;
+            transition: background var(--transition-duration), color var(--transition-duration);
+        }
 
-    nav a:hover {
-      color: #00bcd4;
-    }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
 
-    section {
-      padding: 40px 20px;
-      max-width: 1000px;
-      margin: auto;
-    }
+        html {
+            scroll-behavior: smooth;
+        }
 
-    h2 {
-      text-align: center;
-      margin-bottom: 20px;
-      position: relative;
-    }
+        /* --- Hero Section --- */
+        #hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--heading-color);
+            overflow: hidden;
+            background: linear-gradient(45deg, var(--bg-primary), var(--bg-secondary));
+        }
 
-    h2::after {
-      content: "";
-      display: block;
-      width: 60px;
-      height: 3px;
-      background: #00bcd4;
-      margin: 10px auto;
-      border-radius: 2px;
-    }
+        #hero h1 {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 700;
+            letter-spacing: -1px;
+            text-shadow: 0 0 10px var(--accent-color);
+            margin: 0;
+        }
 
-    .profile-full {
-      display: block;
-      margin: 20px auto;
-      width: 250px;
-      height: auto;
-      border-radius: 12px;
-      object-fit: cover;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.25);
-      border: 3px solid #00bcd4;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
+        #hero p {
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            max-width: 600px;
+            margin: 10px auto 30px;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+        
+        /* NEW: Button container */
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+        }
 
-    .profile-full:hover {
-      transform: scale(1.05);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.35);
-    }
+        /* NEW: General button style */
+        .btn {
+            background-color: var(--accent-color);
+            color: var(--bg-primary);
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: transform var(--transition-duration), box-shadow var(--transition-duration), background-color var(--transition-duration);
+            box-shadow: 0 4px 15px rgba(0, 188, 212, 0.3);
+        }
 
-    .skills-category, .experience-category, .education-category, .certifications-category {
-      margin-bottom: 40px;
-    }
+        .btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            background-color: #00a4b8;
+            box-shadow: 0 8px 25px rgba(0, 188, 212, 0.5);
+        }
 
-    .skills, .projects, .experience, .education, .certifications {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
+        /* --- Header and Theme Switcher --- */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(var(--bg-primary-rgb, 13, 17, 23), 0.85); /* Fallback for older browsers */
+            backdrop-filter: blur(10px);
+            padding: 15px 20px;
+            text-align: center;
+            box-shadow: var(--box-shadow);
+        }
+        
+        /* NEW: Resume download link in nav */
+        nav a {
+            color: var(--text-color);
+            margin: 0 15px;
+            text-decoration: none;
+            transition: color var(--transition-duration), transform var(--transition-duration);
+            position: relative;
+            font-weight: 400;
+        }
 
-    .card {
-      background: white;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      text-align: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--accent-color);
+            transition: width var(--transition-duration) ease-in-out;
+        }
 
-    .card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-      background: #f0faff;
-    }
+        nav a:hover {
+            color: var(--accent-color);
+            transform: translateY(-2px);
+        }
 
-    footer {
-      text-align: center;
-      background: #333;
-      color: white;
-      padding: 15px;
-      margin-top: 20px;
-    }
+        nav a:hover::after {
+            width: 100%;
+        }
 
-    a {
-      color: #00bcd4;
-      text-decoration: none;
-    }
+        /* Other styles remain the same from the previous version */
+        .theme-switcher {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            gap: 10px;
+        }
 
-    a:hover {
-      text-decoration: underline;
-    }
+        .theme-switcher button {
+            background: var(--bg-secondary);
+            border: 1px solid var(--accent-color);
+            color: var(--text-color);
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background var(--transition-duration), color var(--transition-duration);
+            font-weight: 600;
+        }
 
-    img.edu-logo {
-      width:100px;
-      display:block;
-      margin:auto;
-      border-radius:8px;
-    }
-  </style>
+        .theme-switcher button:hover {
+            background: var(--accent-color);
+            color: var(--bg-primary);
+        }
+
+        section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: auto;
+            position: relative;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: var(--heading-color);
+            position: relative;
+        }
+
+        h2::after {
+            content: "";
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--accent-color);
+            margin: 15px auto 0;
+            border-radius: 2px;
+            transition: width var(--transition-duration);
+        }
+
+        section:hover h2::after {
+            width: 120px;
+        }
+
+        .profile-full {
+            display: block;
+            margin: 20px auto;
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--accent-color);
+            box-shadow: 0 4px 15px var(--accent-color);
+            transition: transform var(--transition-duration), box-shadow var(--transition-duration);
+        }
+
+        .profile-full:hover {
+            transform: scale(1.05) rotate(5deg);
+            box-shadow: 0 8px 20px var(--accent-color);
+        }
+        
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: var(--bg-secondary);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid var(--accent-color);
+            box-shadow: var(--card-shadow);
+            text-align: center;
+            transition: transform var(--transition-duration), box-shadow var(--transition-duration), background var(--transition-duration);
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 10px 20px var(--card-shadow);
+            background: var(--card-hover-bg);
+            z-index: 1;
+        }
+
+        .card h3 {
+            color: var(--accent-color);
+            margin-top: 0;
+            font-size: 1.4rem;
+        }
+
+        .card p, .card ul {
+            font-size: 0.95rem;
+            color: var(--text-color);
+        }
+
+        .card a {
+            color: var(--accent-color);
+            transition: color var(--transition-duration);
+        }
+
+        .card a:hover {
+            color: #66d9ef;
+            text-decoration: underline;
+        }
+
+        .skills-category .grid-container .card {
+            font-weight: 600;
+            font-size: 1.1rem;
+            border: 1px solid var(--accent-color);
+            color: var(--accent-color);
+        }
+        
+        .skills-category .grid-container .card:hover {
+            transform: scale(1.05);
+            background: var(--accent-color);
+            color: var(--bg-primary);
+            box-shadow: 0 0 20px var(--accent-color);
+        }
+
+        footer {
+            text-align: center;
+            background: var(--bg-secondary);
+            color: var(--text-color);
+            padding: 20px;
+            margin-top: 40px;
+            border-top: 1px solid var(--accent-color);
+        }
+
+        img.edu-logo {
+            width: 100px;
+            height: 100px;
+            display: block;
+            margin: auto;
+            border-radius: 8px;
+            object-fit: contain;
+            background: var(--bg-secondary);
+            padding: 5px;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 3rem; }
+            h2 { font-size: 2rem; }
+            nav a { margin: 0 10px; }
+            .theme-switcher { position: relative; top: auto; right: auto; transform: none; margin-top: 10px; justify-content: center; }
+        }
+    </style>
 </head>
-<body>
-  <header>
-    <h1>Sirish Allam</h1>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#education">Education</a>
-      <a href="#internships">Internships</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#certifications">Certifications</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
+<body class="dark-theme">
+    <section id="hero">
+        <div>
+            <h1>Hi i am Allam Sirish</h1>
+            <p>A Full-Stack Developer passionate about building high-impact web applications, solving complex problems, and creating beautiful user experiences.</p>
+            <div class="hero-buttons">
+                <a href="#projects" class="btn">View My Work ✨</a>
+                <a href="your-resume-file.pdf" class="btn" download="Sirish-Allam-Resume.pdf">Download Resume 📄</a>
+            </div>
+        </div>
+    </section>
 
-  <!-- About Section -->
-  <section id="about">
-    <h2>About Me</h2>
-    <img src="sirish1.jpg" alt="Sirish Allam" class="profile-full">
-    <p style="text-align:center; max-width:700px; margin:auto;">
-      Hi 👋 I'm <b>Sirish Allam</b>, a Full-Stack Developer skilled in C, C++, Python, JavaScript, and the MERN stack. 
-      I am passionate about building innovative projects, solving complex problems, and learning new technologies.
-    </p>
-  </section>
+    <header>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#education">Education</a>
+            <a href="#internships">Internships</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#certifications">Certifications</a>
+            <a href="your-resume-file.pdf" download="Sirish-Allam-Resume.pdf">Resume</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <div class="theme-switcher">
+            <button id="dark-theme-btn">Dark</button>
+            <button id="light-theme-btn">Light</button>
+            <button id="blue-theme-btn">Blue</button>
+        </div>
+    </header>
 
-  <!-- Education Section -->
-  <section id="education">
-    <h2>Education</h2>
-    <div class="education">
-      <!-- KL University -->
-      <div class="card">
-        <img src="kluniversity-logo.png" alt="KL University" class="edu-logo">
-        <h3>KL University</h3>
-        <p><b>Degree:</b> Bachelor of Technology - BTech, Computer Science and Engineering</p>
-        <p><b>Duration:</b> Jun 2023 - Present</p>
-        <p><b>Activities & Societies:</b> CENTRE OF EXTENSION ACTIVITIES, Social immersive learning</p>
-        <p><b>Skills:</b> Machine Learning · Java · HTML · C · JavaScript · Artificial Intelligence (AI) · C++</p>
-      </div>
+    <section id="about">
+        <h2>About Me</h2>
+        <img src="sirish1.jpg" alt="Sirish Allam" class="profile-full">
+        <p style="text-align:center; max-width:700px; margin:auto;">
+            Hi there! I'm a passionate and results-driven **Full-Stack Developer** with expertise in C, C++, Python, JavaScript, and the MERN stack (MongoDB, Express.js, React, Node.js). I thrive on turning ideas into reality by crafting clean, efficient, and scalable code. My journey in technology is fueled by a desire to innovate and make a tangible impact through my projects.
+        </p>
+    </section>
 
-      <!-- Tirumala Junior College -->
-      <div class="card">
-        <h3>Tirumala Junior College, Rajamahendravaram</h3>
-        <p><b>Level:</b> Intermediate</p>
-        <p><b>Duration:</b> Sep 2021 - Apr 2023</p>
-        <p><b>Grade:</b> 950 A grade</p>
-        <p><b>Activities & Societies:</b> Cricket, Volleyball</p>
-      </div>
+    <section id="education">
+        <h2>Education</h2>
+        <div class="grid-container">
+            <div class="card">
+                <img src="kluniversity-logo.png" alt="KL University" class="edu-logo">
+                <h3>KL University</h3>
+                <p><b>Degree:</b> Bachelor of Technology - BTech, Computer Science and Engineering</p>
+                <p><b>Duration:</b> Jun 2023 - Present</p>
+                <p><b>Activities:</b> Centre of Extension Activities, Social Immersive Learning</p>
+                <p><b>Skills:</b> Machine Learning · Java · HTML · C · JavaScript · Artificial Intelligence (AI) · C++</p>
+            </div>
+    
+            <div class="card">
+                <h3>Tirumala Junior College, Rajamahendravaram</h3>
+                <p><b>Level:</b> Intermediate</p>
+                <p><b>Duration:</b> Sep 2021 - Apr 2023</p>
+                <p><b>Grade:</b> 950 A grade</p>
+                <p><b>Activities:</b> Cricket, Volleyball</p>
+            </div>
+    
+            <div class="card">
+                <h3>Sri Chaitanya Techno School, Payakaraopeta</h3>
+                <p><b>Level:</b> High School</p>
+                <p><b>Duration:</b> Jun 2020 - Apr 2021</p>
+                <p><b>Grade:</b> 10 A grade</p>
+                <p><b>Activities:</b> Volleyball, Sprinter, Team Leader</p>
+            </div>
+        </div>
+    </section>
 
-      <!-- Sri Chaitanya Techno School -->
-      <div class="card">
-        <h3>Sri Chaitanya Techno School, Payakaraopeta</h3>
-        <p><b>Level:</b> High School / Secondary Certificate Programs</p>
-        <p><b>Duration:</b> Jun 2020 - Apr 2021</p>
-        <p><b>Grade:</b> 10 A grade</p>
-        <p><b>Activities & Societies:</b> Volleyball, Sprinter, Lead the team in activities</p>
-      </div>
-    </div>
-  </section>
+    <section id="internships">
+        <h2>Internships & Programs</h2>
+        <div class="grid-container">
+            <div class="card">
+                <h3>Google Developer Certifications</h3>
+                <p>Completed various online courses and certifications, deepening my knowledge in modern development and cloud technologies.</p>
+            </div>
+            <div class="card">
+                <h3>AICTE & EduSkills Programs</h3>
+                <p>Participated in skill development programs recognized by AICTE and EduSkills, focusing on industry-relevant technologies.</p>
+            </div>
+        </div>
+    </section>
 
-  <!-- Internships Section -->
-  <section id="internships">
-    <h2>Internships & Programs</h2>
-    <div class="experience">
-      <div class="card">
-        <h3>Google Developer Certifications</h3>
-        <p>Various online courses and certifications in development and cloud technologies.</p>
-      </div>
-      <div class="card">
-        <h3>AICTE & EduSkills Programs</h3>
-        <p>Completed skill development programs recognized by AICTE and EduSkills.</p>
-      </div>
-    </div>
-  </section>
+    <section id="skills">
+        <h2>My Skills</h2>
+        <div class="skills-category">
+            <h3 style="text-align:center;">💻 Development</h3>
+            <div class="grid-container">
+                <div class="card">React</div>
+                <div class="card">Node.js</div>
+                <div class="card">Express.js</div>
+                <div class="card">MongoDB</div>
+                <div class="card">HTML</div>
+                <div class="card">CSS</div>
+            </div>
+        </div>
+        <div class="skills-category">
+            <h3 style="text-align:center;">📜 Programming Languages</h3>
+            <div class="grid-container">
+                <div class="card">C</div>
+                <div class="card">C++</div>
+                <div class="card">Python</div>
+                <div class="card">JAVA</div>
+                <div class="card">JavaScript</div>
+            </div>
+        </div>
+        <div class="skills-category">
+            <h3 style="text-align:center;">🛠 Tools</h3>
+            <div class="grid-container">
+                <div class="card">Git & GitHub</div>
+                <div class="card">VS Code</div>
+                <div class="card">Postman</div>
+                <div class="card">PyCharm</div>
+            </div>
+        </div>
+    </section>
 
-  <!-- Skills Section -->
-  <section id="skills">
-    <h2>Skills</h2>
-    <div class="skills-category">
-      <h3 style="text-align:center;">💻 Development</h3>
-      <div class="skills">
-        <div class="card">React</div>
-        <div class="card">Node.js</div>
-        <div class="card">Express.js</div>
-        <div class="card">MongoDB</div>
-      </div>
-    </div>
-    <div class="skills-category">
-      <h3 style="text-align:center;">📜 Programming Languages</h3>
-      <div class="skills">
-        <div class="card">C</div>
-        <div class="card">C++</div>
-        <div class="card">Python</div>
-        <div class="card">JavaScript</div>
-      </div>
-    </div>
-    <div class="skills-category">
-      <h3 style="text-align:center;">🛠 Tools</h3>
-      <div class="skills">
-        <div class="card">Git & GitHub</div>
-        <div class="card">VS Code</div>
-        <div class="card">Postman</div>
-      </div>
-    </div>
-  </section>
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="grid-container">
+            <div class="card">
+                <h3>Agri E-commerce</h3>
+                <p>Developed a full-stack agriculture-based platform using the MERN stack. The site features a comprehensive catalog for seeds, fertilizers, and irrigation products, complete with user authentication and a secure payment gateway.</p>
+            </div>
+            <div class="card">
+                <h3>Student Management System</h3>
+                <p>Engineered a robust student management system using MVC architecture and MongoDB. This application efficiently manages student data, faculty information, and course details, improving administrative workflows.</p>
+            </div>
+        </div>
+    </section>
 
-  <!-- Projects Section -->
-  <section id="projects">
-    <h2>Projects</h2>
-    <div class="projects">
-      <div class="card">
-        <h3>Agri E-commerce</h3>
-        <p>An agriculture-based platform for seeds, fertilizers, and irrigation products.</p>
-      </div>
-      <div class="card">
-        <h3>Student Management System</h3>
-        <p>Manage students, faculty, and courses using MVC architecture and MongoDB.</p>
-      </div>
-    </div>
-  </section>
+    <section id="certifications">
+        <h2>Certifications</h2>
+        <div class="grid-container">
+            <div class="card">
+                <h3>FreeCodeCamp Full Stack Development</h3>
+                <p>Completed a comprehensive full-stack development curriculum, mastering foundational and advanced concepts in HTML, CSS, JavaScript, React, and Node.js.</p>
+                <p><b>Year:</b> 2024</p>
+            </div>
+            <div class="card">
+                <h3>Python Fundamentals - Infosys</h3>
+                <p>Successfully completed a program focused on Python fundamentals, gaining a solid understanding of core programming concepts, data structures, and algorithms.</p>
+                <p><b>Year:</b> 2024</p>
+            </div>
+        </div>
+    </section>
 
-  <!-- Certifications Section -->
-  <section id="certifications">
-    <h2>Certifications</h2>
-    <div class="certifications">
-      <div class="card">
-        <h3>FreeCodeCamp Full Stack Development</h3>
-        <p>Completed comprehensive full-stack development course covering HTML, CSS, JS, React, and Node.js.</p>
-        <p><b>Year:</b> 2024</p>
-      </div>
-      <div class="card">
-        <h3>Python Fundamentals - Infosys</h3>
-        <p>Learned Python basics and fundamental programming concepts.</p>
-        <p><b>Year:</b> 2024</p>
-      </div>
-    </div>
-  </section>
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <p style="text-align:center;">
+            📧 Email: <a href="mailto:allamsirish@example.com">allamsirish@example.com</a><br>
+            <a href="https://github.com/AllAM-SIRISH" target="_blank">GitHub</a> | 
+            <a href="https://www.linkedin.com/in/sirish-allam/" target="_blank">LinkedIn</a>
+        </p>
+    </section>
 
-  <!-- Contact Section -->
-  <section id="contact">
-    <h2>Contact Me</h2>
-    <p style="text-align:center;">
-      📧 Email: <a href="mailto:allamsirish@example.com">allamsirish@example.com</a><br>
-      🌐 <a href="https://github.com/AllAM-SIRISH" target="_blank">GitHub</a> | 
-      <a href="https://www.linkedin.com/in/sirish-allam/" target="_blank">LinkedIn</a>
-    </p>
-  </section>
+    <footer>
+        <p>© 2025 Sirish Allam. All rights reserved.</p>
+    </footer>
 
-  <footer>
-    <p>© 2025 Sirish Allam. All rights reserved.</p>
-  </footer>
+    <script>
+        const themeButtons = document.querySelectorAll('.theme-switcher button');
+        const body = document.body;
+
+        const themeMap = {
+            'dark-theme-btn': 'dark-theme',
+            'light-theme-btn': 'light-theme',
+            'blue-theme-btn': 'blue-theme'
+        };
+
+        // Function to apply a theme
+        function applyTheme(theme) {
+            body.className = theme;
+            localStorage.setItem('theme', theme);
+        }
+
+        // Set initial theme from localStorage or default to dark
+        const savedTheme = localStorage.getItem('theme') || 'dark-theme';
+        applyTheme(savedTheme);
+
+        // Add event listeners to buttons
+        themeButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const newTheme = themeMap[button.id];
+                applyTheme(newTheme);
+            });
+        });
+    </script>
 </body>
 </html>
